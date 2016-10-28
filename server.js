@@ -11,11 +11,14 @@ var Strategy = require('passport-openidconnect').Strategy;
 // with a user object, which will be set at `req.user` in route handlers after
 // authentication.
 passport.use(new Strategy({
-    clientID: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    authorizationURL: 'https://login0.myauth0.com/i/oauth2/authorize',
-    tokenURL: 'https://login0.myauth0.com/oauth/token',
-    callbackURL: 'http://localhost:3000/callback'
+    //clientID: process.env.CLIENT_ID,
+    //clientSecret: process.env.CLIENT_SECRET,
+    clientID: 'kLFFNtjtHPwiMtjgkFRnZSSHDRUNGG9H',
+    clientSecret: 'AnLx7ULwep93Nnh7',
+    authorizationURL: 'https://apistg.np.covapp.io/oauth/v3/authorization',
+    tokenURL: 'https://apistg.np.covapp.io/oauth/v3/token',
+    callbackURL: 'http://localhost:3000/callback',
+    userInfoURL: 'https://apistg.np.covapp.io/person/v3/userInfo'
   },
   function(token, tokenSecret, profile, cb) {
     // In this example, the user's Twitter profile is supplied as the user
@@ -91,4 +94,4 @@ app.get('/profile',
     res.render('profile', { user: req.user });
   });
 
-app.listen(3000);
+app.listen(process.env.port);
