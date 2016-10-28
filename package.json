@@ -14,6 +14,9 @@
     "type": "git",
     "url": "git://github.com/passport/express-4.x-openidconnect-example.git"
   },
+  "engines": {
+    "node": "6.6.0"
+  },
   "bugs": {
     "url": "https://github.com/passport/express-4.x-openidconnect-example/issues"
   },
