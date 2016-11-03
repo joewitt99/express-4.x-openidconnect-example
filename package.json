@@ -29,6 +29,6 @@
     "express-session": "^1.11.3",
     "morgan": "^1.6.1",
     "passport": "^0.3.2",
-    "passport-openidconnect": "file:///Users/jwitt/sources/pocs/passport-openidconnect"
+    "@joewitt99/passport-openidconnect": "0.0.4"
   }
 }

@@ -1,6 +1,6 @@
 var express = require('express');
 var passport = require('passport');
-var Strategy = require('passport-openidconnect').Strategy;
+var Strategy = require('@joewitt99/passport-openidconnect').Strategy;
 
 
 // Configure the Twitter strategy for use by Passport.
@@ -13,6 +13,7 @@ var Strategy = require('passport-openidconnect').Strategy;
 passport.use(new Strategy({
     //clientID: process.env.CLIENT_ID,
     //clientSecret: process.env.CLIENT_SECRET,
+    issuer: 'covisint.com',
     clientID: 'kLFFNtjtHPwiMtjgkFRnZSSHDRUNGG9H',
     clientSecret: 'AnLx7ULwep93Nnh7',
     authorizationURL: 'https://apistg.np.covapp.io/oauth/v3/authorization',
