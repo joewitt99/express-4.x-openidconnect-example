@@ -18,7 +18,7 @@ passport.use(new Strategy({
     clientSecret: 'AnLx7ULwep93Nnh7',
     authorizationURL: 'https://apistg.np.covapp.io/oauth/v3/authorization',
     tokenURL: 'https://apistg.np.covapp.io/oauth/v3/token',
-    callbackURL: 'http://covoidctest.azurewebsites.net/callback',
+    callbackURL: 'http://openidconnect-example.azurewebsites.net/callback',
     userInfoURL: 'https://apistg.np.covapp.io/person/v3/userInfo'
   },
   function(token, tokenSecret, profile, cb) {
