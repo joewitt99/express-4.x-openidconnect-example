@@ -31,7 +31,7 @@ passport.use(new Strategy({
     // providers.
 
     //call the userInfo directly.  The library is not working as expect.
-    var options = {
+    /*var options = {
       "method": "GET",
       "hostname": "apistg.np.covapp.io",
       "port": 443,
@@ -58,9 +58,9 @@ passport.use(new Strategy({
         return cb(null, profile);
         
       });
-    });
+    });*/
 
-
+    return cb(null, profile);
     
   }));
 
