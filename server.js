@@ -21,14 +21,14 @@ passport.use(new Strategy({
     callbackURL: 'http://openidconnect-example.azurewebsites.net/callback',
     userInfoURL: 'https://apistg.np.covapp.io/person/v3/userInfo'
   },
-  function(token, tokenSecret, profile, cb) {
+  function(iss, sub, profile, accessToken, refreshToken, verified) {
     // In this example, the user's Twitter profile is supplied as the user
     // record.  In a production-quality application, the Twitter profile should
     // be associated with a user record in the application's database, which
     // allows for account linking and authentication with other identity
     // providers.
-    console.log("token = " + token);
-    console.log("tokenSecret = " + tokenSecret);
+    console.log("token = " + accessToken);
+    console.log("tokenSecret = " + refreshToken);
     console.log(profile);
     return cb(null, profile);
   }));
