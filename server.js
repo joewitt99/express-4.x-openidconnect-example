@@ -1,3 +1,5 @@
+var http = require("https");
+
 var express = require('express');
 var passport = require('passport');
 var Strategy = require('@joewitt99/passport-openidconnect').Strategy;
@@ -27,10 +29,39 @@ passport.use(new Strategy({
     // be associated with a user record in the application's database, which
     // allows for account linking and authentication with other identity
     // providers.
-    console.log("token = " + accessToken);
-    console.log("tokenSecret = " + refreshToken);
-    console.log(profile);
-    return cb(null, profile);
+
+    //call the userInfo directly.  The library is not working as expect.
+    var options = {
+      "method": "GET",
+      "hostname": "apistg.np.covapp.io",
+      "port": 443,
+      "path": "/person/v3/userInfo",
+      "headers": {
+        "authorization": "Bearer " + accessToken,
+        "accept": "application/json",
+        "cache-control": "no-cache"
+      }
+    };
+
+    var req = http.request(options, function (res) {
+      var chunks = [];
+
+      res.on("data", function (chunk) {
+        chunks.push(chunk);
+      });
+
+      res.on("end", function () {
+        var body = Buffer.concat(chunks);
+        console.log(body.toString());
+        profile.name.givenName = body.given_name;
+        profile.name.familyName = body.family_name;
+        return cb(null, profile);
+        
+      });
+    });
+
+
+    
   }));
 
 
