@@ -1,6 +1,6 @@
 {
   "name": "openidconnect-example",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Express 4.x app using Passport for authentication via OpenID Connect.",
   "keywords": [
     "example",
