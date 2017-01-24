@@ -21,7 +21,7 @@ passport.use(new Strategy({
     callbackURL: 'http://openidconnect-example.azurewebsites.net/callback',
     userInfoURL: 'https://apistg.np.covapp.io/person/v3/userInfo'
   },
-  function(iss, sub, profile, accessToken, refreshToken, verified) {
+  function(iss, sub, profile, accessToken, refreshToken, cb) {
     // In this example, the user's Twitter profile is supplied as the user
     // record.  In a production-quality application, the Twitter profile should
     // be associated with a user record in the application's database, which
