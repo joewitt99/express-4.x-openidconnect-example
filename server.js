@@ -16,12 +16,12 @@ passport.use(new Strategy({
     //clientID: process.env.CLIENT_ID,
     //clientSecret: process.env.CLIENT_SECRET,
     issuer: 'covisint.com',
-    clientID: 'kLFFNtjtHPwiMtjgkFRnZSSHDRUNGG9H',
-    clientSecret: 'AnLx7ULwep93Nnh7',
-    authorizationURL: 'https://apistg.np.covapp.io/oauth/v3/authorization',
-    tokenURL: 'https://apistg.np.covapp.io/oauth/v3/token',
+    clientID: 'AZ65UNn7MtHtzjnQIEJ9BDsICUSfcvHG',
+    clientSecret: 'AcgwJ6ROKoG8McMM',
+    authorizationURL: 'https://apiqa.np.covapp.io/oauth/v3/authorization',
+    tokenURL: 'https://apiqa.np.covapp.io/oauth/v3/token',
     callbackURL: 'http://openidconnect-example.azurewebsites.net/callback',
-    userInfoURL: 'https://apistg.np.covapp.io/person/v3/userInfo'
+    userInfoURL: 'https://apiqa.np.covapp.io/person/v3/userInfo'
   },
   function(iss, sub, profile, accessToken, refreshToken, cb) {
     // In this example, the user's Twitter profile is supplied as the user
