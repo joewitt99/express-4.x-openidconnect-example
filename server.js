@@ -30,7 +30,7 @@ passport.use(new Strategy({
     clientSecret: 'AcgwJ6ROKoG8McMM',
     authorizationURL: 'https://apiqa.np.covapp.io/oauth/v3/authorization',
     tokenURL: 'https://apiqa.np.covapp.io/oauth/v3/token',
-    callbackURL: 'http://localhost:9999',
+    callbackURL: 'http://localhost:9999/callback',
     //callbackURL: 'http://openidconnect-example.azurewebsites.net/callback',
     userInfoURL: 'https://apiqa.np.covapp.io/person/v3/userInfo'
   },
@@ -129,13 +129,13 @@ app.get('/login/idp',
   passport.authenticate('openidconnect'));
 
 app.get('/callback', 
+  passport.authenticate('openidconnect', { failureRedirect: '/login' }),
   function(req, res) {
-    process.stdout.write( "In callback" );
     res.redirect('/');
   });
 
 app.get('/profile',
-  require('connect-ensure-login').ensureLoggedIn(),
+  //require('connect-ensure-login').ensureLoggedIn(),
   function(req, res){
     res.render('profile', { user: req.user });
   });
