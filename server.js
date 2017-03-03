@@ -16,11 +16,22 @@ passport.use(new Strategy({
     //clientID: process.env.CLIENT_ID,
     //clientSecret: process.env.CLIENT_SECRET,
     issuer: 'covisint.com',
+
+    // STG
+    //clientID: 'kLFFNtjtHPwiMtjgkFRnZSSHDRUNGG9H',
+    //clientSecret: 'AnLx7ULwep93Nnh7',
+    //authorizationURL: 'https://apistg.np.covapp.io/oauth/v3/authorization',
+    //tokenURL: 'https://apistg.np.covapp.io/oauth/v3/token',
+    //callbackURL: 'http://openidconnect-example.azurewebsites.net/callback',
+    //userInfoURL: 'https://apistg.np.covapp.io/person/v3/userInfo'
+
+    // QA
     clientID: 'AZ65UNn7MtHtzjnQIEJ9BDsICUSfcvHG',
     clientSecret: 'AcgwJ6ROKoG8McMM',
     authorizationURL: 'https://apiqa.np.covapp.io/oauth/v3/authorization',
     tokenURL: 'https://apiqa.np.covapp.io/oauth/v3/token',
-    callbackURL: 'http://openidconnect-example.azurewebsites.net/callback',
+    callbackURL: 'http://localhost:9999',
+    //callbackURL: 'http://openidconnect-example.azurewebsites.net/callback',
     userInfoURL: 'https://apiqa.np.covapp.io/person/v3/userInfo'
   },
   function(iss, sub, profile, accessToken, refreshToken, cb) {
@@ -118,8 +129,8 @@ app.get('/login/idp',
   passport.authenticate('openidconnect'));
 
 app.get('/callback', 
-  passport.authenticate('openidconnect', { failureRedirect: '/login' }),
   function(req, res) {
+    process.stdout.write( "In callback" );
     res.redirect('/');
   });
 
