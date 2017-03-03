@@ -30,9 +30,10 @@ passport.use(new Strategy({
     clientSecret: 'AcgwJ6ROKoG8McMM',
     authorizationURL: 'https://apiqa.np.covapp.io/oauth/v3/authorization',
     tokenURL: 'https://apiqa.np.covapp.io/oauth/v3/token',
-    callbackURL: 'http://localhost:9999/callback',
-    //callbackURL: 'http://openidconnect-example.azurewebsites.net/callback',
-    userInfoURL: 'https://apiqa.np.covapp.io/person/v3/userInfo'
+    //callbackURL: 'http://localhost:9999/callback',
+    callbackURL: 'http://openidconnect-example.azurewebsites.net/callback',
+    userInfoURL: 'https://apiqa.np.covapp.io/person/v3/userInfo',
+    scope: 'profile email'
   },
   function(iss, sub, profile, accessToken, refreshToken, cb) {
     // In this example, the user's Twitter profile is supplied as the user
@@ -137,7 +138,7 @@ app.get('/callback',
 app.get('/profile',
   //require('connect-ensure-login').ensureLoggedIn(),
   function(req, res){
-    res.render('profile', { user: req.user });
+    res.render('profile', { user: req.user._json });
   });
 
 app.listen(process.env.port);
